@@ -1,0 +1,50 @@
+{% load static %}
+{%load bootstrap5%}
+{%bootstrap_css%}
+{% load bootstrap_icons %}
+
+<div class="container-fluid">
+<h3>Detalles de Asignación</h3>
+     {% if request.session.funcionario.items %}
+      {% for key,value in request.session.funcionario.items  %}
+       <h5>funcionario a Asignar - {{value.funcionario_id}}: {{value.funcionario_nombre}} {{value.funcionario_apellido}}
+         <a href="{% url 'asignacion:procesar' %}" class="btn btn-success">Procesar{%bs_icon 'check'%}</a>
+         <a href="{% url 'asignacion:del2SessionF' %}" class="btn btn-warning">Cambiar Funcionario {%bs_icon 'patch-minus'%}</a>
+         <a href="{% url 'asignacion:cancel' %}" class="btn btn-danger">Cancelar Proceso {%bs_icon 'x-circle'%}</a>
+       </h5>
+        {% endfor %}
+
+
+{% if request.session.asignacion.items %}
+         <h6>Listado de Dependencias</h6>
+    <table class="table table-striped table-hover">
+     <thead>
+        <tr>
+          <th scope="col">Placa</th>
+          <th scope="col">Elemento</th>
+          <th scope="col">Operacion</th>
+        </tr>
+      </thead>
+     <tbody>
+     {% for key,value in request.session.asignacion.items  %}
+        <tr>
+          <td>{{ value.asignacion_id }}</td>
+          <td>{{ value.marca }} {{value.modelo}}</td>
+
+          <td>
+            <a href="{% url 'asignacion:del2Asig' value.asignacion_id %}" class="btn btn-danger">Remover{%bs_icon 'dash-circle'%}</a>
+          </td>
+
+        </tr>
+    {% endfor %}
+    </table>
+
+    {% else %}
+         <div class="alert alert-primary" role="alert">
+             <h6>Añada un elemento a la lista para empezar</h6>
+        </div>
+
+    {% endif %}
+    {%endif%}
+
+</div>

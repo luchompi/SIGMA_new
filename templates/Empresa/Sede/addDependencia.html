@@ -1,0 +1,35 @@
+{% extends 'base/body.html' %}
+{%load crispy_forms_tags%}
+{%load bootstrap5%}
+{% load static %}
+{%bootstrap_css%}
+{% load bootstrap_icons %}
+
+{% block title %}
+Añadir dependencia - SIGMA
+{% endblock %}
+
+
+{% block content %}
+<h1>Añadir nueva Dependencia en Sede: {{object.sede}}</h1>
+<div class="card">
+  <div class="card-header">
+    Añadir Sede Nueva
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Seleccione La sede a Añadir, luego de clic en guardar</h5>
+    <form method="POST">
+              {% csrf_token %}
+              {{form|crispy}}
+
+
+
+          <a href="{% url 'empresa:sedeUpdate' object.id %}" class="btn btn-primary" >Regresar</a>
+          <button type="submit" class="btn btn-success">Guardar</button>
+
+  </form>
+      </div>
+
+  </div>
+</div>
+{% endblock content %}
