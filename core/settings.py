@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os
+import os,dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -99,12 +99,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #}
 DATABASES = {
     'default':{
-    'ENGINE': 'django.db.backends.postgresql',
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'd4uiutho5s43oi',
     'USER': 'kfhdhwtesphxjj',
-    'PASSWORD': 'fed60b29a44e62661f4994cfc441555e93ef001342b9a4c014806071821a04e3.',
+    'PASSWORD': 'fed60b29a44e62661f4994cfc441555e93ef001342b9a4c014806071821a04e3',
     'HOST': 'ec2-3-219-63-251.compute-1.amazonaws.com',
-    'PORT': 5432,
+    'PORT': '5432',
     }
 }
 
@@ -164,3 +164,7 @@ DATABASES['default'].update(db_from_env)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+#DatabaseConfig
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
