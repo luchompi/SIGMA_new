@@ -67,7 +67,7 @@ class SedeUpdateView(UpdateView):
     model = Sede
     form = SedeForm
     fields = ['sede',]
-    success_url = "/empresa/sedes/detalles/{id}"
+    success_url = '/empresa/sedes/detalles/{id}'
     template_name = 'Empresa/Sede/update.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
