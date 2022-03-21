@@ -54,7 +54,7 @@ class del2Asig(View):
 			func.remove(obj)
 			context={
 			'personas' : Funcionario.objects.all(),
-			'query' : Elemento.objects.filter(esAsignado=False)
+			'query' : Elemento.objects.filter(esAsignado=False,enMantenimiento=False)
 			}
 			return render(request,'Asignacion/index.html',context)
 

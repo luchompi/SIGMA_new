@@ -19,10 +19,11 @@
 				            <th>Placa</th>
 				            <th>Elemento</th>
 				            <th>Fecha de Asignacion</th>
-				            <th>PID</th>
+										<th>PID</th>
+				            <th>Ver detalles</th>
 				        </thead>
 				        <tbody>
-				                {% for row in query  %} 
+				                {% for row in query  %}
 				                <tr>
 				                    <th scope="row" >{{row.elemento.placa}} </th>
 				                    <td>{{row.elemento.marca}} {{row.elemento.modelo}}</td>
@@ -34,5 +35,13 @@
 				                </tr>
 				                {% endfor %}
 				        </tbody>
-				    </table>	
+				    </table>
 {% endblock content %}
+{% block js %}
+    <script  src="{% static 'js/jquery.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.dataTables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/datatables.min.css' %}">
+    <script src="{% static 'js/data/jquery.dataTables.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/data/dataTable.js' %}" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="{% static 'js/data/datatables.min.js' %}" type="text/javascript" charset="utf-8" async defer></script>
+{% endblock js %}
