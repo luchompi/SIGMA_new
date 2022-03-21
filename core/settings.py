@@ -87,17 +87,26 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default':{
+#    'ENGINE': 'django.db.backends.postgresql',
+#    'NAME': 'db_sigma',
+#    'USER': 'postgres',
+#    'PASSWORD': 'L4l09599.',
+#    'HOST': 'localhost',
+#    'PORT': 5432,
+#    }
+#}
 DATABASES = {
     'default':{
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'db_sigma',
-    'USER': 'postgres',
-    'PASSWORD': 'L4l09599.',
-    'HOST': 'localhost',
+    'NAME': 'd4uiutho5s43oi',
+    'USER': 'kfhdhwtesphxjj',
+    'PASSWORD': 'fed60b29a44e62661f4994cfc441555e93ef001342b9a4c014806071821a04e3.',
+    'HOST': 'ec2-3-219-63-251.compute-1.amazonaws.com',
     'PORT': 5432,
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
