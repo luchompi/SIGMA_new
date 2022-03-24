@@ -21,15 +21,16 @@ class Mantenimiento(models.Model):
     class Estado(models.TextChoices):
         activo='En Proceso'
         irreparable = 'Irreparable'
-        baja = 'En Proceso de Baja'
-    
+        OK = 'OK'    
     elemento=models.ForeignKey(Elemento,on_delete=models.CASCADE)
     deBaja=models.BooleanField(default=False)
-    descripcion=models.TextField(max_length=2000)
+    descripcion=models.TextField(max_length=20000000000)
     fecha=models.DateTimeField(auto_now=True)
     user=models.CharField(max_length=50)
-    observaciones=models.TextField(max_length=2000)
-    estado=models.CharField(choices=Estado.choices,default='Activo', max_length=50)
+    observaciones=models.TextField(max_length=20000000000)
+    enProceso=models.BooleanField(default=False)
+    finalizado=models.BooleanField(default=False)
+    irreparable=models.BooleanField(default=False)
     timestamps=models.DateTimeField(auto_now=True)
 
     class Meta:

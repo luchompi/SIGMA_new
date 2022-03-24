@@ -49,6 +49,7 @@ class Elemento(models.Model):
     tipoIngreso=models.CharField(choices=Ingresos.choices,default='Compra directa',max_length=150)
     esAsignado=models.BooleanField(default=False)
     enMantenimiento=models.BooleanField(default=False)
+    enBaja=models.BooleanField(default=False)
     timestamps=models.DateTimeField(auto_now=True)
 
     class Meta:

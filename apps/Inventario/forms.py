@@ -30,7 +30,6 @@ class elementoForm(forms.Form):
     mac=forms.CharField()
     valorAdquisicion=forms.DecimalField()
     valorActual=forms.DecimalField()
-    
     proveedor=forms.ModelChoiceField(queryset = Proveedor.objects.all())
     marca=forms.ModelChoiceField(queryset = Marca.objects.all())
     modelo=forms.ModelChoiceField(queryset = Modelo.objects.all())
