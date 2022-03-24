@@ -3,3 +3,7 @@ Notas de la versión
 2. Habilitada gestion de Sedes, Proveedores y Dependencias
 3. Añadida gesiton de Funcionarios
 4. Implementada seguridad en las funciones, ahora se reqeuiere sesion iniciada para poder acceder a ellas
+
+
+En Proceso:
+A. Añadiendo detalles de Mantenimiento
