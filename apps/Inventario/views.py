@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from django.views.generic import CreateView,UpdateView,View
 from .models import Marca,Modelo,Elemento
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import marcaForm,modeloForm,elementoForm
 # Procedimientos con Marcas
-class MarcaCreate(CreateView):
+class MarcaCreate(LoginRequiredMixin,CreateView):
+    login_url='/auth/login'
     model = Marca
     fields = ['marca',]
     form = marcaForm
@@ -15,7 +17,8 @@ class MarcaCreate(CreateView):
         return context
 
 
-class MarcaUpdate(UpdateView):
+class MarcaUpdate(LoginRequiredMixin,UpdateView):
+    login_url='/auth/login'
     model = Marca
     fields = ['marca',]
     form = marcaForm
@@ -27,7 +30,8 @@ class MarcaUpdate(UpdateView):
         return context
 
 
-class MarcaDelete(View):
+class MarcaDelete(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         id = self.kwargs['pk']
         Marca.objects.get(id=id).delete()
@@ -35,7 +39,8 @@ class MarcaDelete(View):
 
 
 #Procedimientos con Modelos
-class ModeloCreate(CreateView):
+class ModeloCreate(LoginRequiredMixin,CreateView):
+    login_url='/auth/login'
     model = Modelo
     fields = ['modelo',]
     form = modeloForm
@@ -46,25 +51,28 @@ class ModeloCreate(CreateView):
         context["query"] = Modelo.objects.all()
         return context
 
-class ModeloUpdate(UpdateView):
-        model = Modelo
-        fields = ['modelo',]
-        form = modeloForm
-        success_url="/inventario/modelos/detalles/{id}"
-        template_name="Inventario/Modelos/update.html"
-        def get_context_data(self, **kwargs):
+class ModeloUpdate(LoginRequiredMixin,UpdateView):
+    login_url='/auth/login'
+    model = Modelo
+    fields = ['modelo',]
+    form = modeloForm
+    success_url="/inventario/modelos/detalles/{id}"
+    template_name="Inventario/Modelos/update.html"
+    def get_context_data(self, **kwargs):
             context = super().get_context_data(**kwargs)
             context["query"] = Modelo.objects.get(id=self.kwargs['pk'])
             return context
 
-class ModeloDelete(View):
+class ModeloDelete(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         id = self.kwargs['pk']
         Modelo.objects.get(id=id).delete()
         return redirect('inventario:modeloIndex')
 
 #Procedimientos de Elementos
-class ElementoCreate(CreateView):
+class ElementoCreate(LoginRequiredMixin,CreateView):
+    login_url='/auth/login'
     model = Elemento
     fields=[
     'Serial',
@@ -88,7 +96,8 @@ class ElementoCreate(CreateView):
         context["query"] = Elemento.objects.all()
         return context
 
-class ElementoUpdate(UpdateView):
+class ElementoUpdate(LoginRequiredMixin,UpdateView):
+    login_url='/auth/login'
     model = Elemento
     fields=[
     'Serial',
@@ -114,7 +123,8 @@ class ElementoUpdate(UpdateView):
 
 
 
-class ElementoDelete(View):
+class ElementoDelete(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         id =self.kwargs['pk']
         Elemento.objects.get(placa=id).delete()

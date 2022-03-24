@@ -8,7 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixi
 # Create your views here.
 
 #Operaciones con Dependencias
-class DependenciaCreateView(CreateView):
+class DependenciaCreateView(LoginRequiredMixin,CreateView):
+    login_url='/auth/login'
     model = Dependencia
     fields = ['dependencia',]
     template_name = 'Empresa/Dependencia/index.html'
@@ -19,14 +20,16 @@ class DependenciaCreateView(CreateView):
         context["query"] = Dependencia.objects.all()
         return context
 
-class DependenciaDelete(View):
+class DependenciaDelete(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         id = kwargs['pk']
         Dependencia.objects.get(id=id).delete()
         return redirect('empresa:dependenciaIndex')
 
 
-class DependenciaUpdateView(UpdateView):
+class DependenciaUpdateView(LoginRequiredMixin,UpdateView):
+    login_url='/auth/login'
     model = Dependencia
     template_name = "Empresa/Dependencia/update.html"
     form = DependenciaForm
@@ -36,7 +39,8 @@ class DependenciaUpdateView(UpdateView):
 
 
 #Operaciones Con sedes
-class SedeCreateView(CreateView):
+class SedeCreateView(LoginRequiredMixin,CreateView):
+    login_url='/auth/login'
     model= Sede
     form = SedeForm
     fields = ['sede',]
@@ -54,7 +58,8 @@ class SedeCreateView(CreateView):
         sede.add(queryset)
         return redirect('empresa:sedeDependencia',queryset.id)
 
-class sedeDependenciaView(View):
+class sedeDependenciaView(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         pk=(self.kwargs['pk'])
         context={
@@ -63,7 +68,8 @@ class sedeDependenciaView(View):
         }
         return render(request,'Empresa/Sede/detalles.html',context)
 
-class SedeUpdateView(UpdateView):
+class SedeUpdateView(LoginRequiredMixin,UpdateView):
+    login_url='/auth/login'
     model = Sede
     form = SedeForm
     fields = ['sede',]
@@ -76,13 +82,15 @@ class SedeUpdateView(UpdateView):
 
 
 
-class SedeDelete(View):
+class SedeDelete(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         id = kwargs['pk']
         Sede.objects.get(id=id).delete()
         return redirect('empresa:sedeIndex')
 
-class add(View):
+class add(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         query = Dependencia.objects.get(id=self.kwargs['pk'])
         if query:
@@ -93,7 +101,8 @@ class add(View):
                 id=aux[row]['sede_id']
             return redirect('empresa:sedeDependencia',str(id))
 
-class clear(View):
+class clear(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         dependencia =d(self.request)
         dependencia.clear()
@@ -102,7 +111,8 @@ class clear(View):
             id=aux[row]['sede_id']
         return redirect('empresa:sedeDependencia',str(id))
 
-class remove(View):
+class remove(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         query = Dependencia.objects.get(id=kwargs['pk'])
         dep = d(self.request)
@@ -112,7 +122,8 @@ class remove(View):
             id=aux[row]['sede_id']
         return redirect('empresa:sedeDependencia',str(id))
 
-class store(View):
+class store(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         sede = request.session["sede"]
         dep = request.session["detalle"]
@@ -125,7 +136,8 @@ class store(View):
         dep.clear()
         return redirect('empresa:sedeUpdate',str(s))
 
-class agregarDependencia(View):
+class agregarDependencia(LoginRequiredMixin,View):
+    login_url='/auth/login'
     def get(self,request,*args,**kwargs):
         context={
         'form':addDependenciaForm,

@@ -7,15 +7,18 @@ from apps.Personas.models import Funcionario
 from apps.Inventario.models import Elemento
 
 #Procedimiento de Asignaciones
-class Asignar(View):
+class Asignar(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		context={
-		'personas' : Funcionario.objects.all(),
-		'query' : Elemento.objects.filter(esAsignado=False)
+			'personas' : Funcionario.objects.all(),
+			'query' : Elemento.objects.filter(esAsignado=False)
 		}
 		return render(request,'Asignacion/index.html',context)
 
-class add2SessionF(View):
+
+class add2SessionF(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		query = Funcionario.objects.get(identificacion=self.kwargs['pk'])
 		funcionario = fc(self.request)
@@ -24,7 +27,8 @@ class add2SessionF(View):
 			context={'query':Elemento.objects.filter(esAsignado=False)}
 			return render(request,'Asignacion/index.html',context)
 
-class del2SessionF(View):
+class del2SessionF(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		funcionario = fc(self.request)
 		funcionario.clear()
@@ -34,7 +38,8 @@ class del2SessionF(View):
 		}
 		return render(request,'Asignacion/index.html',context)
 
-class add2Asig(View):
+class add2Asig(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		obj = Elemento.objects.get(placa=self.kwargs['pk'])
 		if obj:
@@ -46,7 +51,8 @@ class add2Asig(View):
 			}
 			return render(request,'Asignacion/index.html',context)
 
-class del2Asig(View):
+class del2Asig(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		obj = Elemento.objects.get(placa = self.kwargs['pk'])
 		if obj:
@@ -58,7 +64,8 @@ class del2Asig(View):
 			}
 			return render(request,'Asignacion/index.html',context)
 
-class Asig2func(View):
+class Asig2func(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		elemento = asig(self.request)
 		func = fc(self.request)
@@ -76,7 +83,8 @@ class Asig2func(View):
 		func.clear()
 		return render(request,'Asignacion/asignaciones.html',context={'query':Funcionario.objects.all()})
 
-class cancel(View):
+class cancel(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		elemento = asig(self.request)
 		func = fc(self.request)
@@ -85,12 +93,14 @@ class cancel(View):
 		return redirect('asignacion:consulta')
 
 #Procedimientos de consulta de asignaciones
-class query(View):
+class query(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		return render(request,'Asignacion/asignaciones.html',context={'query':Funcionario.objects.all()})
 
 
-class funcQuery(View):
+class funcQuery(LoginRequiredMixin,View):
+	login_url='/auth/login'
 	def get(self,request,**kwargs):
 		context={
 		'query': Asignacion.objects.filter(funcionario_id=self.kwargs['pk']),
