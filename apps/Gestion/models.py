@@ -18,24 +18,21 @@ class Asignacion(models.Model):
         return '%s %s'%(self.funcionario,self.elemento)
 
 class Mantenimiento(models.Model):
-    class Estado(models.TextChoices):
-        activo='En Proceso'
-        irreparable = 'Irreparable'
-        OK = 'OK'    
     elemento=models.ForeignKey(Elemento,on_delete=models.CASCADE)
     deBaja=models.BooleanField(default=False)
     descripcion=models.TextField(max_length=20000000000)
     fecha=models.DateTimeField(auto_now=True)
     user=models.CharField(max_length=50)
-    observaciones=models.TextField(max_length=20000000000)
+    observaciones=models.TextField(max_length=20000000000,null=True,blank=True)
     enProceso=models.BooleanField(default=False)
     finalizado=models.BooleanField(default=False)
     irreparable=models.BooleanField(default=False)
     timestamps=models.DateTimeField(auto_now=True)
+    timestampsF=models.DateTimeField(null=True,blank=True)
 
     class Meta:
         verbose_name = "Mantenimiento"
         verbose_name_plural = "Mantenimientos"
 
     def __str__(self):
-        return '%s %s'%(self.elemento,self.estado)
+        return '%s'%(self.elemento)

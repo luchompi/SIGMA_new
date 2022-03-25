@@ -18,7 +18,6 @@
             <th>Placa</th>
             <th>Nombre en Red</th>
             <th>Descripción de elemento</th>
-            <th>Estado</th>
             <th>Opciones</th>
         </thead>
         <tbody>
@@ -27,8 +26,8 @@
                     <th scope="row" >{{row.placa}} </th>
                     <td>{{row.nombreRed}} </td>
                     <td>{{row.marca}} {{row.modelo}} </td>
-                    <td>{{row.estado}}</td>
-                    <td><a class="btn btn-info" href="{% url 'mantenimiento:mantDetail' row.placa %}">Detalles {% bs_icon 'search' %}</a>
+                    <td><a class="btn btn-primary" href="{% url 'mantenimiento:mantDetail' row.placa %}">Detalles {% bs_icon 'search' %}</a>
+                    <a class="btn btn-info" href="{% url 'mantenimiento:mantHistorial' row.placa %}">Historial {% bs_icon 'card-checklist' %}</a>
                     </td>
                 </tr>
                 {% endfor %}

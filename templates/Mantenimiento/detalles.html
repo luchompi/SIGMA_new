@@ -9,13 +9,23 @@
 {% endblock title %}
 
 {% block header %}
-    <h1>Detalles de Mantenimiento del elemento de Placa: {{query.elemento.placa}} </h1>
+   <div class="container-fluid">
+        <h1>Detalles de Mantenimiento del elemento de Placa: {{query.elemento.placa}} </h1>
+   </div>
 {% endblock header %}
 
 {% block content %}
     <div class="container">
     	<div class="row">
     		<div class="col">
+                
+                <div class="card">
+  <div class="card-header">
+    Datos del Elemento
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <th>Placa</th>
@@ -25,7 +35,6 @@
                         <th>IP</th>
                     </thead>
                     <tbody>
-                            
                             <tr>
                                 <th scope="row" >{{query.elemento.placa}} </th>
                                 <td>{{query.elemento.nombreRed}} </td>
@@ -34,7 +43,6 @@
                                 <td>{{query.elemento.ip}}
                                 </td>
                             </tr>
-                        
                     </tbody>
                 </table>
                 <table  class="table table-striped table-hover table-bordered">
@@ -47,41 +55,29 @@
                                 <th scope="row" >{{query.elemento.mac}} </th>
                                 <td>{{query.elemento.Serial}} </td>
                             </tr>
-                        
                     </tbody>
                 </table>
+  </div>
+</div>
     		</div>
     		<div class="col">
-                <h3>Detalle de Mantenimiento</h3>
-    			<form method="POST">
-    				{% csrf_token %}
-    				{{form|crispy}}
-    			</form>
+                <div class="card">
+  <div class="card-header">
+    Detalle de Mantenimiento
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Diligencie la información solicitada</h5>
+   <form method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button type="submit" class="btn btn-primary">Guardar Datos</button>
+                </form>
+  </div>
+</div>
+               
+    			
     		</div>
     	</div>
-        <div class="row">
-            <h4>Historial de Mantenimientos</div>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <th>Placa</th>
-                    <th>Nombre en Red</th>
-                    <th>Descripción de elemento</th>
-                    <th>Estado</th>
-                    <th>IP</th>
-                </thead>
-                <tbody>
-                        
-                        <tr>
-                            <th scope="row" >{{query.elemento.placa}} </th>
-                            <td>{{query.elemento.nombreRed}} </td>
-                            <td>{{query.elemento.marca}} {{query.modelo}} </td>
-                            <td>{{query.elemento.estado}}</td>
-                            <td>{{query.elemento.ip}}
-                            </td>
-                        </tr>
-                    
-                </tbody>
-            </table>
-        </div>
+        
     </div>
 {% endblock content %}
