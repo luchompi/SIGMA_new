@@ -59,7 +59,6 @@ class DatosMantenimiento(LoginRequiredMixin,View):
 			irr= form.cleaned_data['irreparable']
 			query = Mantenimiento.objects.get(id=obj)
 			query.observaciones=obs
-			query.irreparable=irr
 			query.finalizado=True
 			query.timestampsF = dt.now()
 			query.enProceso=False
@@ -70,7 +69,11 @@ class DatosMantenimiento(LoginRequiredMixin,View):
 				row.estado='En Proceso de Baja'
 				row.enMantenimiento=False
 				row.save()
+				query.irreparable=irr
+			else:
+				row = Elemento.objects.get(placa=query.elemento_id)
+				row.enMantenimiento=False
+				row.save()
+				query.irreparable=False
 			query.save()
 		return redirect('/mantenimientos/')
-
-

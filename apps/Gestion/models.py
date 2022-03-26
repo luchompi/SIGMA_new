@@ -7,7 +7,7 @@ from apps.Personas.models import Funcionario
 class Asignacion(models.Model):
     funcionario=models.ForeignKey(Funcionario,on_delete=models.CASCADE)
     elemento=models.ForeignKey(Elemento,on_delete=models.CASCADE)
-    user=models.CharField(max_length=50) 
+    user=models.CharField(max_length=50)
     timestamps=models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -26,7 +26,7 @@ class Mantenimiento(models.Model):
     observaciones=models.TextField(max_length=20000000000,null=True,blank=True)
     enProceso=models.BooleanField(default=False)
     finalizado=models.BooleanField(default=False)
-    irreparable=models.BooleanField(default=False)
+    irreparable=models.BooleanField(null=True,blank=True)
     timestamps=models.DateTimeField(auto_now=True)
     timestampsF=models.DateTimeField(null=True,blank=True)
 

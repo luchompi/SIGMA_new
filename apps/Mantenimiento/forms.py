@@ -7,5 +7,4 @@ class mantenimientoForm(forms.Form):
 
 class MantenimientoForm2(forms.Form):
     observaciones=forms.CharField(widget=forms.Textarea,label='Observaciones Generales')
-    irreparable=forms.BooleanField(label='Equipo con daño total')
-    
+    irreparable=forms.BooleanField(label='Equipo con daño total',required=False)
