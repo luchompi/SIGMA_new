@@ -7,4 +7,4 @@ Notas de la versión
 6. Ahora, cuando se finaliza un mantenimiento, Las variables lógicas cambian
 
 En Proceso:
-A. Añadiendo detalles de Mantenimiento - OK
+Bajas - Por Iniciar
