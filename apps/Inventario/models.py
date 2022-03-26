@@ -45,7 +45,7 @@ class Elemento(models.Model):
     proveedor=models.ForeignKey(Proveedor,on_delete=models.SET_NULL,null=True,blank=True,verbose_name="Proveedor")
     marca=models.ForeignKey(Marca,on_delete=models.CASCADE,verbose_name="Marca del Elemento")
     modelo=models.ForeignKey(Modelo,on_delete=models.CASCADE,verbose_name="Modelo del Elemento")
-    estado=models.CharField(choices=Estado.choices,default='Activo', max_length=50)
+    estado=models.CharField(choices=Estado.choices,default='Por Asignar', max_length=50)
     tipoIngreso=models.CharField(choices=Ingresos.choices,default='Compra directa',max_length=150)
     esAsignado=models.BooleanField(default=False)
     enMantenimiento=models.BooleanField(default=False)

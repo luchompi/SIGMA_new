@@ -25,4 +25,5 @@ urlpatterns = [
     path('inventario/',include("apps.Inventario.urls",namespace="inventario")),
     path('asignacion/',include("apps.Gestion.urls",namespace="asignacion")),
     path('mantenimientos/',include("apps.Mantenimiento.urls",namespace="mantenimiento")),
+    path('bajas/',include("apps.Bajas.urls",namespace="bajas")),
 ]

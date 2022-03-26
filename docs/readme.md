@@ -5,6 +5,8 @@ Notas de la versión
 4. Implementada seguridad en las funciones, ahora se reqeuiere sesion iniciada para poder acceder a ellas
 5. Ahora, Cuando se hace mantenimiento de un elemento, visual se muestran detalles en colores sobre el mismo
 6. Ahora, cuando se finaliza un mantenimiento, Las variables lógicas cambian
+7. Habilitado el modulo de bajas
 
-En Proceso:
-Bajas - Por Iniciar
+
+------------------
+obs: Ahora, el producto se encuentra terminado, todos los procedimietos base se encuentran cubiertos
