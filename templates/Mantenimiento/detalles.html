@@ -10,7 +10,7 @@
 
 {% block header %}
    <div class="container-fluid">
-        <h1>Detalles de Mantenimiento del elemento de Placa: {{query.elemento.placa}} </h1>
+        <h1>Detalles de Mantenimiento del elemento de Placa: {{query.placa}} </h1>
    </div>
 {% endblock header %}
 
@@ -24,8 +24,6 @@
     Datos del Elemento
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <th>Placa</th>
@@ -36,11 +34,11 @@
                     </thead>
                     <tbody>
                             <tr>
-                                <th scope="row" >{{query.elemento.placa}} </th>
-                                <td>{{query.elemento.nombreRed}} </td>
-                                <td>{{query.elemento.marca}} {{query.modelo}} </td>
-                                <td>{{query.elemento.estado}}</td>
-                                <td>{{query.elemento.ip}}
+                                <th scope="row" >{{query.placa}} </th>
+                                <td>{{query.nombreRed}} </td>
+                                <td>{{query.marca}} {{query.modelo}} </td>
+                                <td>{{query.estado}}</td>
+                                <td>{{query.ip}}
                                 </td>
                             </tr>
                     </tbody>
@@ -52,8 +50,8 @@
                     </thead>
                     <tbody>
                             <tr>
-                                <th scope="row" >{{query.elemento.mac}} </th>
-                                <td>{{query.elemento.Serial}} </td>
+                                <th scope="row" >{{query.mac}} </th>
+                                <td>{{query.Serial}} </td>
                             </tr>
                     </tbody>
                 </table>

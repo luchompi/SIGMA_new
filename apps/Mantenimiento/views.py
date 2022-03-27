@@ -17,7 +17,7 @@ class DetallesMantenimiento(LoginRequiredMixin,View):
 	def get(self,request,**kwargs):
 		obj = self.kwargs['pk']
 		context = {
-		'query':Asignacion.objects.get(elemento_id=obj),
+		'query':Elemento.objects.get(placa=obj),
 		'form':mantenimientoForm,
 		}
 		return render(request,'Mantenimiento/detalles.html',context)
@@ -77,3 +77,12 @@ class DatosMantenimiento(LoginRequiredMixin,View):
 				query.irreparable=False
 			query.save()
 		return redirect('/mantenimientos/')
+
+class ConsultaMantenimiento(LoginRequiredMixin,View):
+	login_url='/auth/login'
+	def get(self,request,**kwargs):
+		q = self.kwargs['pk']
+		context={
+		'query':Mantenimiento.objects.get(id=q),
+		}
+		return render(request,'Mantenimiento/datos.html',context)

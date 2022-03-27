@@ -31,7 +31,7 @@
                     <td>Mantenimiento no finalizado</td>
                     <td>En Proceso</td>
                     <td><a class="btn btn-primary" href="{% url 'mantenimiento:mantQuery' row.id %}">Explorar {% bs_icon 'search' %}</a>
-                    
+                    <a class="btn btn-info" href="{% url 'mantenimiento:mantData' row.id %}">Ver {% bs_icon 'search' %}</a>
                     </td>
                 </tr>
                {% elif row.finalizado and not row.irreparable %}
@@ -40,6 +40,7 @@
                     <td>{{row.timestamps}} </td>
                     <td>{{row.timestampsF}} </td>
                     <td> Finalizado, Equipo OK</td>
+                    <td> <a class="btn btn-info" href="{% url 'mantenimiento:mantData' row.id %}">Ver {% bs_icon 'search' %}</a></td>
                     
                 </tr>
                {% elif row.irreparable and row.finalizado%}
@@ -48,6 +49,7 @@
                     <td>{{row.timestamps}} </td>
                     <td>{{row.timestampsF}} </td>
                     <td>Finalizado, Equipo Irreparable </td>
+                    <td> <a class="btn btn-info" href="{% url 'mantenimiento:mantData' row.id %}">Ver {% bs_icon 'search' %}</a></td>
                     
                 </tr>
                

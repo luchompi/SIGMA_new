@@ -1,0 +1,85 @@
+{% extends "base/body.html" %}
+
+{% block title %}
+    Información de Mantenimiento - SIGMA
+{% endblock title %}
+
+
+{% block header %}
+    <h1>Información sobre el mantenimiento de PID: {{query.id}}</h1>
+{% endblock header %}
+
+
+{% block content %}
+    <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Información previa</h5>
+    <p class="card-text">
+    	<table id="datos" class="table table-striped table-hover table-bordered">
+        <thead>
+            <th>Placa</th>
+            <th>Nombre en Red</th>
+            <th>Características del elemento</th>
+            <th>Fecha de inicio del Mantenimiento</th>
+            <th>Fecha de finalización</th>
+        </thead>
+        <tbody>
+                <tr>
+                    <th scope="row" >{{query.elemento_id}} </th>
+                    <td>{{query.elemento.nombreRed}} </td>
+                    <td>{{query.elemento.marca}} {{query.elemento.modelo}} </td>
+                    <td>{{query.timestamps}}</td>
+                    <td>{% if query.enProceso %}
+                        Equipo continúa en mantenimiento
+                    {% else %}
+                        {{query.timestampsF}}
+                    {% endif %}</td>
+                   
+
+                </tr>
+                
+        </tbody>
+    </table>
+    <table id="datos" class="table table-striped table-hover table-bordered">
+        <thead>
+            <th>Detalles del mantenimiento</th>
+        </thead>
+        <tbody>
+                <tr>
+                    <th scope="row" >{{query.descripcion}} </th>
+                </tr>                
+        </tbody>
+    </table>
+    <table id="datos" class="table table-striped table-hover table-bordered">
+        <thead>
+            <th>Observaciones</th>            
+        </thead>
+        <tbody>
+                <tr>
+                	{% if query.enProceso %}
+                        <th scope="row" > N/A </th>
+                    {% else %}
+                         <th scope="row" >{{query.observaciones}} </th> 
+                    {% endif %}
+                                    
+                </tr>                
+        </tbody>
+    </table>
+    <p>¿El mantenimiento finalizó?
+    {% if query.enProceso %}
+        <strong>No</strong>
+    {% else %}
+        <strong>Sí</strong>
+    {% endif %}
+    </p>
+    <p>¿El elemento está en proceso de baja?
+    {% if query.irreparable %}
+        <strong>Sí</strong>
+    {% else %}
+        <strong>No</strong>
+    {% endif %}
+    </p>
+    </p>
+  </div>
+</div>
+{% endblock content %}

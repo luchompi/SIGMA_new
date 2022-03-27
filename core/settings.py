@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',#3rd party
+    'django.contrib.staticfiles',
+    #3rd party
     'bootstrap5',
     'django_bootstrap_icons',
     'crispy_forms',

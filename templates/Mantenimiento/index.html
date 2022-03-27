@@ -26,7 +26,7 @@
                     <th scope="row" >{{row.placa}} </th>
                     <td>{{row.nombreRed}} </td>
                     <td>{{row.marca}} {{row.modelo}} </td>
-                    <td><a class="btn btn-primary" href="{% url 'mantenimiento:mantDetail' row.placa %}">Detalles {% bs_icon 'search' %}</a>
+                    <td><a class="btn btn-success" href="{% url 'mantenimiento:mantDetail' row.placa %}">Establecer {% bs_icon 'plus-circle' %}</a>
                     <a class="btn btn-info" href="{% url 'mantenimiento:mantHistorial' row.placa %}">Historial {% bs_icon 'card-checklist' %}</a>
                     </td>
                 </tr>

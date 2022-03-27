@@ -10,3 +10,5 @@ Notas de la versión
 
 ------------------
 obs: Ahora, el producto se encuentra terminado, todos los procedimietos base se encuentran cubiertos
+Bonus:
+A. Ahora se listan detalles de los mantenimientos, se puede leer detalles sobre lo que se está haciendo tipo reportes
