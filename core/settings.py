@@ -88,26 +88,26 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default':{
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'db_sigma',
-    'USER': 'postgres',
-    'PASSWORD': 'L4l09599.',
-    'HOST': 'localhost',
-    'PORT': 5432,
-    }
-}
 #DATABASES = {
 #    'default':{
-#    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#    'NAME': 'd4fpqbkk4idd47',
-#    'USER': 'ebbvyqbtklmkcn',
-#    'PASSWORD': 'b9310edddcb0c757852e15d531ea6a4fcc08e5799ba2978fc19cdb4e53440dbf',
-#    'HOST': 'ec2-18-210-191-5.compute-1.amazonaws.com',
-#    'PORT': '5432',
+#    'ENGINE': 'django.db.backends.postgresql',
+#    'NAME': 'db_sigma',
+#    'USER': 'postgres',
+#    'PASSWORD': 'L4l09599.',
+#    'HOST': 'localhost',
+#    'PORT': 5432,
 #    }
 #}
+DATABASES = {
+    'default':{
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'd4fpqbkk4idd47',
+    'USER': 'ebbvyqbtklmkcn',
+    'PASSWORD': 'b9310edddcb0c757852e15d531ea6a4fcc08e5799ba2978fc19cdb4e53440dbf',
+    'HOST': 'ec2-18-210-191-5.compute-1.amazonaws.com',
+    'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
